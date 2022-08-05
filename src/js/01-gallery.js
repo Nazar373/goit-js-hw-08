@@ -11,8 +11,6 @@ const images = createGalleryItems(galleryItems);
 
 gallery.insertAdjacentHTML('beforeend', images);
 
-gallery.addEventListener('click', modalWindow);
-
 function createGalleryItems(items) {
   return items
   .map(({preview, original, description}) => {
@@ -30,10 +28,4 @@ function createGalleryItems(items) {
   }).join("")
 };
 
-function modalWindow(e) {
-  e.preventDefault();
-  if (e.target.nodeName !== "IMG") {
-    return;
-  }
-  new SimpleLightbox('.gallery a', {captionDelay: 250});
-};
+new SimpleLightbox('.gallery a', {captionDelay: 250});
