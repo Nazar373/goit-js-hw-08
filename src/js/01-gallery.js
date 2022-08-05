@@ -7,7 +7,6 @@ import { galleryItems } from './gallery-items';
 console.log(galleryItems);
 
 
-new SimpleLightbox('.gallery a', {captionDelay: 250});
 
 const gallery = document.querySelector('.gallery');
 const images = createGalleryItems(galleryItems);
@@ -38,4 +37,5 @@ function modalWindow(e) {
   if (e.target.nodeName !== "IMG") {
     return;
   }
+  new SimpleLightbox('.gallery a', {captionDelay: 250});
 };
