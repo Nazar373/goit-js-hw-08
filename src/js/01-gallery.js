@@ -6,8 +6,6 @@ import { galleryItems } from './gallery-items';
 
 console.log(galleryItems);
 
-
-
 const gallery = document.querySelector('.gallery');
 const images = createGalleryItems(galleryItems);
 
