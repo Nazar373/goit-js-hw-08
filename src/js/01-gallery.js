@@ -16,7 +16,7 @@ function createGalleryItems(items) {
   .map(({preview, original, description}) => {
     return `
       <div class="gallery__item">
-      <a class="gallery__link" href="large-image.jpg">
+      <a class="gallery__link" href="${original}">
       <img
       class="gallery__image"
       src="${preview}"
@@ -28,4 +28,4 @@ function createGalleryItems(items) {
   }).join("")
 };
 
-new SimpleLightbox('.gallery a', {captionDelay: 250});
+ new SimpleLightbox('.gallery a', {captionDelay: 250});
