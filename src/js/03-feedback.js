@@ -25,10 +25,10 @@ function onFormSubmit(evt) {
   evt.preventDefault();
   evt.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
-  if( !refs.form.value){
+  if(!refs.form.value){
    return alert('asgkma')
   } else {
-  console.log(formData) 
+  console.log(formData.trim())
   }
 };
 
