@@ -20,14 +20,14 @@ function onFormInput(evt) {
 }
 
 function onFormSubmit(evt) {
-  evt.preventDefault();
-  evt.currentTarget.reset();
-  localStorage.removeItem(STORAGE_KEY);
-  if(!refs.form.value){
-   return alert('asgkma')
-  } else {
-  console.log(formData.trim())
-  }
+  if(!refs.textarea.value){
+    return alert('please fill in the blank')
+   } else {
+    evt.preventDefault();
+    evt.currentTarget.reset();
+    localStorage.removeItem(STORAGE_KEY);
+    console.log(formData.value);
+   }
 };
 
 function onTextareaInput(evt){
@@ -36,7 +36,7 @@ function onTextareaInput(evt){
 };
 
 function populateTextarea() {
-  const savedMassage = localStorage.getItem(STORAGE_KEY)
+  const savedMassage = localStorage.getItem(STORAGE_KEY);
   if(savedMassage){
     console.log(savedMassage);
     refs.textarea.value = savedMassage;
