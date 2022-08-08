@@ -14,8 +14,6 @@ refs.form.addEventListener('input', throttle(onFormInput, 500));
 populateTextarea()
 
 function onFormInput(evt) {
-  // console.log(evt.target.name);
-  // console.log(evt.target.value);
   formData[evt.target.name] = evt.target.value;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
   JSON.parse(JSON.stringify(formData));
@@ -40,6 +38,7 @@ function onTextareaInput(evt){
 function populateTextarea() {
   const savedMassage = localStorage.getItem(STORAGE_KEY)
   if(savedMassage){
-    console.log(STORAGE_KEY)
+    console.log(savedMassage);
+    refs.textarea.value = savedMassage;
   }
 }
