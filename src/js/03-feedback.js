@@ -6,7 +6,7 @@ const refs = {
   textarea: document.querySelector('.feedback-form textarea'),
   input: document.querySelector('.feedback-form input')
 };
-const formData = JSON.parse(localStorage.getItem(STORAGE_KEY))|| {};
+// const formData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onFormInput, 500));
@@ -14,8 +14,10 @@ refs.form.addEventListener('input', throttle(onFormInput, 500));
 populateTextarea()
 
 function onFormInput(evt) {
-  formData[evt.target.name] = evt.target.value;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+  // console.log(evt.target.value)
+  // formData[evt.target.name] = evt.target.value;
+  const formData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({...formData, [evt.target.name]: evt.target.value}));
   JSON.parse(JSON.stringify(formData));
 }
 
