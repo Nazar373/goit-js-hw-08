@@ -3,11 +3,11 @@ import throttle from 'lodash.throttle';
 const STORAGE_KEY = 'feedback-form-state'
 const refs = {
   form: document.querySelector('.feedback-form'),
-  textarea: document.querySelector('.feedback-form textarea')
+  textarea: document.querySelector('.feedback-form textarea'),
+  input: document.querySelector('.feedback-form input')
 };
 const formData = {};
 
-refs.textarea.addEventListener('input', throttle(onTextareaInput, 500));
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onFormInput, 500));
 
@@ -20,25 +20,20 @@ function onFormInput(evt) {
 }
 
 function onFormSubmit(evt) {
-  if(!refs.textarea.value){
+  if(refs.textarea.value === '' || refs.input.value === ''){
     return alert('please fill in the blank')
    } else {
     evt.preventDefault();
     evt.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
-    console.log(formData.value);
+    console.log(formData);
    }
 };
 
-function onTextareaInput(evt){
-  const message = evt.target.value;
-  localStorage.setItem(STORAGE_KEY, message);
-};
-
 function populateTextarea() {
-  const savedMassage = localStorage.getItem(STORAGE_KEY);
+  const savedMassage = JSON.parse(localStorage.getItem(STORAGE_KEY));
   if(savedMassage){
-    console.log(savedMassage);
-    refs.textarea.value = savedMassage;
+    refs.textarea.value = savedMassage.message || "";
+    refs.input.value = savedMassage.email || "";
   }
 }
